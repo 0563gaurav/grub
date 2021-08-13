@@ -1,0 +1,23 @@
+/* Important Notes on  Installation of grub */
+NOTE 1.: *  In order to install grub as your bootloader , you need to first install the grub system and utilities under the operating system . You can od this either from the source tarball or from  OS packages.
+NOTE 2.: * After you have  done this , you need to install the bootloader on a drive (Flppy or hard-disk) by using the utility grub-install on a unix-like OS.
+
+NOTE 3.: * Grub comes with boot images , which are normally put in the directory " /usr/lib/grub/<cpu>-<platform>" ( For BIOS based machines "/usr/lib/grub/i386-pc").
+Hareafter. the  directory , where GRUB images are initially palced ( normally "/usr/lib/grub/<cpu>-<platform>" ) will be called the image directory , and the directory where the the bootloader needs to find them ( usually "/boot") will be called boot directory.
+
+
+
+/* Installation procedure */
+* In-order to install grub under the unix-like os ( such as GNU ) , invoke the program ' grub-install ' as root privilages:
+NOTE: The usage of the this command is very simple . you only need to specify one argument to the program , namely , where to install the bootloader. The argument has to be a device file ( like '/dev/hda') For example , under linux the following will install grub into the MBR of first IDE disk:
+	# grub-install /dev/sda 
+  Likewise , under GNU/Hurd , this has the same effect:
+	# grub-install /dev/hd0
+
+NOTE: But all the above  examples assumes that grub should put images under the '/boot' directory . If you want grub to put images under a directory other than '/boot', you need to specify the option '--boot-directory '.The typical usages is that you create a grub boot floopy with a filesystem . Example :
+	# mke2fs /dev/fd0
+	# mount -t ext3 /dev/fd0 /mnt
+	# mkdir /mnt/boot
+	# grub-install --boot-directory=/mnt/boot /dev/fd0
+	# umount /mnt
+

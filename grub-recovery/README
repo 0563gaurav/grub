@@ -1,0 +1,4 @@
+/* Notes on grub-recovery */
+NOTE: 1. If you missing the grub configuration file then you fall into grub-console. To solve this problem you can load kernel manually by setting 'root=(hd0,<partition-name>)' and linux , initrd and boot command .After Booting is done then you can user 'grub-mkconfig'  and 'grub-install' command to fix this  issue.
+NOTE: 2. If you missing a grub binay/module or whole grub directory , In this case you will fall into to grub-rescue prompt . To solve this problem You have to use live-installation media. and makw use of chroot command .
+MOTE: 3. If you kernel is not able to mount real root filesystem then it will throw you into the initramfs prompt( busyboox filesystem).

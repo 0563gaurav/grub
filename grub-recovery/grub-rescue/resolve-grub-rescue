@@ -1,0 +1,11 @@
+/* This guide give you step to resolve the grub-rescue problems */
+# Follow the steps:
+1. types 'ls' command on the terminal to list all the connect storage media as well as associated partition .
+2. type this on terminal '  ls (hd<xxx> , <yyy><zzz>)' ==>to see the contant of specified partition of particular storage media.
+	NOTE: Replace <xxx>= 'storage media number eg. hd0, hd2 , etc '; <yyy>='storage media partition type, eg. msdos, gpt,ext2 ..etc '  ; <zzz>= 'partition number'
+3. you have to apply above two command on every entry.
+4. If you find every partition with " filesystem umknown " error,  then type 'set' command on terminal
+5. set boot=(hd0, msdos5)
+6. set prefix=(hd0,msdos5)
+7. insmod normal
+8. normal 

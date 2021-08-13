@@ -1,0 +1,79 @@
+/* This is the plan to learn grub Practically */
+
+
+1. ?* Introduction to grub ?*
+
+
+
+2. ?* Naming Convention ?*
+
+
+
+
+
+
+3. ?* OS-specific Notes about hrub tools *?
+
+
+
+4. ?* Installation Of grub *?
+
+
+
+
+
+5. ?* Booting the system with grub *?
+
+
+
+6. ?* Writing Your own configuration file *?
+
+
+
+7. *? Theme file format *?
+
+
+8. *? Booting grub from Network *?
+
+
+
+9. *? Using GRUB Via a serial line *?
+
+
+
+10. *? Using Grub with venders power-on keys
+
+
+11. *? Grub image size *?
+
+
+12. *? Core Image size limitation *?
+
+
+13. *? Filesystem syntax and semantics *?
+
+
+14. *? Grub's user interface *?
+
+
+
+15. *? grub environment variables *?
+
+
+16. *? The list of available commands *?
+
+
+17. *? Internationalisation *?
+
+
+18. *? Security *?
+
+
+19. *? Platform limitation *?
+
+
+20. *? Supported boot targets *?
+
+
+21. *? HOw to obtain and build grub *?
+
