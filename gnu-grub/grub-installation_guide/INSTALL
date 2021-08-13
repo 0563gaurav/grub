@@ -8,6 +8,7 @@ Hareafter. the  directory , where GRUB images are initially palced ( normally "/
 
 
 /* Installation procedure */
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 * In-order to install grub under the unix-like os ( such as GNU ) , invoke the program ' grub-install ' as root privilages:
 NOTE: The usage of the this command is very simple . you only need to specify one argument to the program , namely , where to install the bootloader. The argument has to be a device file ( like '/dev/hda') For example , under linux the following will install grub into the MBR of first IDE disk:
 	# grub-install /dev/sda 
@@ -18,6 +19,25 @@ NOTE: But all the above  examples assumes that grub should put images under the 
 	# mke2fs /dev/fd0
 	# mount -t ext3 /dev/fd0 /mnt
 	# mkdir /mnt/boot
+NOTE: The important thing is that , you removable media must have at least two partition , first partition of max of 512M , it must be formatted as fat32 and mounted
+ under the /mnt/boot/elf , second partition of 10GB or more should be created and formatted in any filesystem.
 	# grub-install --boot-directory=/mnt/boot /dev/fd0
 	# umount /mnt
+** Some BIOS's have bugs od exposing the forst partition of usb drive as floopy instead of exposing the USB drive as a hard drive (they call it USB-FDD). In such case , you need to like this :
+	#losetup /dev/loop0 /dev/sdb1
+	#mount /dev/loop0 /mnt/usb
+	# grub-install --boot-directory=/mnt/usb/bugbios --force --allow-floppy /dev/loop0
+** this does not conflict with standard install as long as they are sepearte directory.
+
+NOTE: On EFI systems for fixed disk install you have to mount EFI system partition . If you mount it at '/boot/efi' then you do not need any special argument.
+	# grub-install
+     Otherwise you need to specify where your EFI system partition is mounted .
+	#grub-install --efi-directory=/mnt/boot/efi --boot-directory=/mnt/boot /dev/sdb
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/* making a grub bootable CD-ROM */
+NOTE: 1. Grub supports no emulation mode in the EI Torito specification . This means that you can use the the whole CD-ROM  from grub and you don't have make a fllopy and hard-disk images file , which can cause the compatibility problem.
+
+NOTE: 2. For booting from a CD-ROM , GRUB uses a special images called 'cdboot.img' ,which is concatenated with 'core.img'. the core.img used for this should be build at least 'iso9660' and 'biosdisk' modules. Your bootable CD-ROM will usually also need to include a configuration file 'grub.cfg' na dsome other modules.
+
 
